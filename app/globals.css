@@ -1,42 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --font-heading: var(--font-heading);
-  --font-body: var(--font-body);
+  /* Colors */
+  --color-background: #020202;
+  --color-background-55: rgba(13, 13, 13, 0.55);
+  --color-grey-2: #242424;
+  --color-grey-0: #ABABAB;
+  --color-grey-1: #C7C7C7;
+  --color-white-1: #F9F9F9;
+  --color-white-10: rgba(255, 255, 255, 0.10);
+  --color-white-0: #FFFFFF;
+  --color-green: rgba(26, 255, 117, 0.80);
+  --color-green-solid: #1AFF75;
+  --color-dark-blue: #050915;
+  --color-white-2: #F5F5F8;
+  --color-blue-destak: #4F1AD6;
+  --color-pink: #EC4899;
+
+  /* Typography */
+  --font-sans: "Open Sans", system-ui, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
 }
 
-/* Scroll suave */
+/* Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
-/* Remove outline padrão e adiciona estilo acessível */
+body {
+  background-color: #020202;
+  color: #F9F9F9;
+  font-family: "Open Sans", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0D0D0D;
+}
+::-webkit-scrollbar-thumb {
+  background: #242424;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(26, 255, 117, 0.4);
+}
+
+/* Selection */
+::selection {
+  background: rgba(26, 255, 117, 0.25);
+  color: #F9F9F9;
+}
+
+/* Focus */
 *:focus-visible {
-  outline: 2px solid #4F5CFF;
+  outline: 2px solid rgba(26, 255, 117, 0.6);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-/* Scrollbar customizada (opcional, para navegadores Webkit) */
-::-webkit-scrollbar {
-  width: 8px;
+/* Utility: font-serif */
+.font-serif {
+  font-family: "Instrument Serif", Georgia, serif;
 }
 
-::-webkit-scrollbar-track {
-  background: #F0F2F5;
+/* Grain texture overlay */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.35;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #C7D2FE;
-  border-radius: 4px;
+/* Animated gradient border */
+@keyframes border-spin {
+  from { --angle: 0deg; }
+  to { --angle: 360deg; }
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #A5B4FC;
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
 }
 
-/* Selection color */
-::selection {
-  background-color: #C7D2FE;
-  color: #1A1A2E;
+.gradient-border {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(#020202, #020202) padding-box,
+    linear-gradient(var(--angle), #1AFF75, #4F1AD6, #1AFF75) border-box;
+  animation: border-spin 4s linear infinite;
+}
+
+/* Glow effects */
+.glow-green {
+  box-shadow: 0 0 40px rgba(26, 255, 117, 0.15), 0 0 80px rgba(26, 255, 117, 0.05);
+}
+
+.text-glow-green {
+  text-shadow: 0 0 30px rgba(26, 255, 117, 0.5);
+}
+
+/* Section divider */
+.section-divider {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
 }

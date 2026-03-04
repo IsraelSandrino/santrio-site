@@ -1,38 +1,39 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Inter } from "next/font/google";
+import { Open_Sans, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
-const plusJakarta = Plus_Jakarta_Sans({
+const openSans = Open_Sans({
   subsets: ["latin"],
-  variable: "--font-heading",
+  variable: "--font-sans",
   display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-const inter = Inter({
+const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
-  variable: "--font-body",
+  variable: "--font-serif",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
   title: "Santrio Operations Lab",
   description:
-    "Consultoria operacional para laboratórios clínicos. Diagnóstico, estratégia e implementação para maximizar a rentabilidade do seu laboratório.",
+    "Estruturamos e automatizamos processos entre pré-vendas, vendas, financeiro, jurídico, serviços e pós-venda usando tecnologia e IA aplicada.",
   keywords: [
-    "consultoria laboratório",
-    "gestão laboratorial",
-    "faturamento laboratorial",
-    "glosas laboratório",
-    "operações laboratoriais",
-    "rentabilidade laboratório",
+    "automação de processos",
+    "inteligência artificial",
+    "operações empresariais",
+    "integração de sistemas",
+    "agentes de IA",
+    "Santrio",
   ],
   authors: [{ name: "Santrio Operations Lab" }],
   openGraph: {
     title: "Santrio Operations Lab",
     description:
-      "Seu laboratório fatura, mas não lucra? Diagnosticamos e corrigimos os gargalos operacionais.",
+      "Automatize a sua operação e escale suas vendas com inteligência artificial.",
     type: "website",
     locale: "pt_BR",
   },
@@ -44,10 +45,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${plusJakarta.variable} ${inter.variable}`}>
-      <body className="font-body antialiased bg-santrio-bg text-santrio-dark">
-        {children}
-      </body>
+    <html
+      lang="pt-BR"
+      className={`${openSans.variable} ${instrumentSerif.variable}`}
+    >
+      <body className="antialiased">{children}</body>
     </html>
   );
 }
