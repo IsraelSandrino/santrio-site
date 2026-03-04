@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme {
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+}
+
+/* Scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Remove outline padrão e adiciona estilo acessível */
+*:focus-visible {
+  outline: 2px solid #4F5CFF;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Scrollbar customizada (opcional, para navegadores Webkit) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F0F2F5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C7D2FE;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A5B4FC;
+}
+
+/* Selection color */
+::selection {
+  background-color: #C7D2FE;
+  color: #1A1A2E;
+}
